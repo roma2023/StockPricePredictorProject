@@ -1,31 +1,80 @@
-# Stock Price Predictor
+# Stock Price Prediction Project
 
-Authors: Raman Saparkhan, Mugur Preda, Gani Raissov
+## Overview
 
-This repository contains the code for a machine-learning project focused on predicting stock price movements. The goal of the project is to develop a model that can accurately forecast whether stock prices will increase or decrease within a specified timeframe, with the objective of maximizing profits and minimizing risk.
+This project aims to predict stock price movements using machine learning models. It explores various models and techniques to achieve the highest possible precision in predicting stock price increases or decreases.
 
-## Project Overview
+## Table of Contents
 
-In this course project, our goal is to learn how to predict stock price movements using the powerful combination of pandas and scikit-learn. By leveraging historical data, we strive to make informed trading decisions, ensuring profitability and minimizing risk in real-world stock trading scenarios.
+- [Overview](#overview)
+- [Table of Contents](#table-of-contents)
+- [Models Explored](#models-explored)
+- [Data](#data)
+- [Usage](#usage)
+- [Lessons Learned](#lessons-learned)
+- [Example](#example)
 
-## Machine Learning Setup
+## Models Explored
 
-To achieve our objective, we train a machine learning model using pandas and scikit-learn. Our model utilizes historical data to predict whether the price of a stock will increase or decrease within a given period. In order to maximize profits while minimizing risk, we employ precision as our error metric. Precision is calculated as true positives divided by the sum of false positives and true positives, ensuring we minimize losses with false positives (days when we buy the stock, but the price actually goes down).
+The project explores the following machine learning models:
 
-## Feature Selection
+1. **k-Nearest Neighbors (k-NN)**:
+   - Achieved a precision of 80%.
+   - Challenges in high-dimensional spaces were noted.
 
-In our approach, we incorporate popular indicators commonly used in real-life stock market analysis as features for our machine learning algorithm. These indicators play a crucial role in enhancing the predictive capabilities of our model.
+2. **Support Vector Machine (SVM)**:
+   - Achieved a precision of 81.9%.
+   - Suitable for hyperdimensional features and mid-sized datasets.
 
-## Project Timeline
+3. **Random Forest (RF)**:
+   - Achieved the best precision of 82%.
+   - Cross-validation ensured results were not due to chance.
+   - Not suitable for boosting due to complexity.
 
-- April 2023 - May 2023
+4. **AdaBoost on SVM & Decision Tree**:
+   - Boosting the RF model was deemed impractical due to complexity.
+   - Decision Tree performed better individually than in combination with SVM.
+   - Decision Tree achieved a precision of approximately 82%.
 
-## Achievements
+## Data
 
-- Developed a real-time Query Answering Machine for stock price prediction using Python, pandas, and scikit-learn.
-- Increased the accuracy of data by implementing Selenium for direct data scraping and extraction from various web sources.
-- Implemented multiple machine learning models, achieving 82% precision on a mid-sized dataset.
-- Conducted a comprehensive evaluation of model strengths and weaknesses, providing suggestions for improvements and future directions.
+The dataset used in this project contains stock price details over a period of time. The dataset was preprocessed to extract relevant features for training and testing the machine learning models.
 
-We welcome contributors to explore and enhance our project further. Let's collaborate and revolutionize stock trading strategies through advanced data analysis and predictive modeling.
+## Usage
 
+To use the best global model for predicting stock price changes, follow these steps:
+
+1. Train the models by running the provided Python scripts for each model.
+2. Incorporate the models using the `cross_Validation_ADA()` function.
+3. Use the best global model for predictions:
+
+```python
+predictions = Best_global_model.predict(live_pred_data)
+print(predictions)
+```
+
+## Lessons Learned
+
+- **k-Nearest Neighbors (k-NN)**:
+  - Achieved an impressive precision of 80% but faced challenges in high-dimensional spaces.
+
+- **Support Vector Machine (SVM)**:
+  - Performed slightly better with a precision of 81.9% and is suitable for mid-sized datasets.
+
+- **Random Forest (RF)**:
+  - Proved to be the best model, achieving 82% precision. However, it's computationally complex.
+
+- **Combining SVM and Decision Tree through AdaBoost**:
+  - Did not significantly improve performance.
+
+- **Decision Tree and SVM**:
+  - Were more effective individually than in combination.
+
+## Example
+
+Here is an example of how to use the best global model to predict stock price changes:
+
+```python
+predictions = Best_global_model.predict(live_pred_data)
+print(predictions)
+```
